@@ -1,4 +1,4 @@
-# sed
+# sed -i -n -r -e
 
 sed '' fichier      affiche le contenu du fichier dans le terminal
 sed -n 'p'          idem. -n n'affiche rien de base & p print le fichier dans un second temps
@@ -18,6 +18,8 @@ echo -e 'IIIIIII\nIIIIIII' | sed '1s/I/i/3;2s/I/i/3g' si pas 2 après le ; ça r
 
 sed -r regex étendues!
 sed -r 's/^[0-9]{1,}\t//g' toto.txt == sel -r -e 's/^[0-9]{1,}//' -e 's/^\t//' file
+
+sed -i   == sed ''file > file Remplace directement dans le fichier
 
 
 #regex
