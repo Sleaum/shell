@@ -18,10 +18,16 @@ echo -e 'IIIIIII\nIIIIIII' | sed '1s/I/i/3;2s/I/i/3g' si pas 2 après le ; ça r
 
 sed -r regex étendues!
 sed -r 's/^[0-9]{1,}\t//g' toto.txt == sel -r -e 's/^[0-9]{1,}//' -e 's/^\t//' file
-
-sed -i   == sed ''file > file Remplace directement dans le fichier
-
+sed -i   == sed '' file > file Remplace directement dans le fichier
 sed '/^$/!s/$/# commentaire de fin de ligne non vide/g' toto.txt
+sed '1,3i ou a \# insertion commentaire sur lignes 1 à 3 au dessus ou en dessous/g' toto.txt
+/^$/! si non(rien entre début et fin de ligne) => si ligne non vide
+sed -r '/\[\w+\]/a#commentaire' fichier \w+ n’importe quelle suite de caractère entre[]
+
+# suppression
+sed '/^\[/d' file
+
+
 
 #regex
 # awk
