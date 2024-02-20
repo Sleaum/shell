@@ -21,6 +21,7 @@ sed -r 's/^[0-9]{1,}\t//g' toto.txt == sel -r -e 's/^[0-9]{1,}//' -e 's/^\t//' f
 
 sed -i   == sed ''file > file Remplace directement dans le fichier
 
+sed '/^$/!s/$/# commentaire de fin de ligne non vide/g' toto.txt
 
 #regex
 # awk
