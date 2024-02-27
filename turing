@@ -1,0 +1,15 @@
+## declare
+  -n 
+  -g
+  -a 
+  
+declare -gA FCT_EXEC= # -g=GLOBAL -A=ASSOCIATIF
+declare fct_name=${FUNCNAME[0]}
+
+
+
+
+## while do done
+
+
+## case in ) ;; esac
