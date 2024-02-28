@@ -9,12 +9,32 @@ liste mots réservés : ! case do done elif else esac fi for function if in sel
 commentaire ' #'
 echo -n pour pas de retour à la ligne
 type -t commande interne,builtin externe,file alias
+stty -a
+set -b préviens sans appuyer sur entrée que un processus est terminé (set +b remet le comportement procédent)
+
+
+#2
+#2.1
 variables utilisateurs prédéfini PS1, PATH
 $ devant variable 'à droite'
 += concaténation chaine de caractères
-read varialbe (scanf(&variable)) read (scanf(&REPLY) read -p "Entrez votre prénom : " prenom
+read variable v2 … (scanf(&variable)) read (scanf(&REPLY) read -p "Entrez votre prénom : " prenom
 declare -r toto=bonjour variable read only (attribut r)
-variables locales / environnement
+declare -p affiche la liste des variables définies , env affiche uniquement les variables d'environnement
+variables locales / environnement(export)
+#2.2
+echo hello world , echo ${1}
+$#    nombre de paramètre
+shift 2 décallage à gauche de 2 des paramètres. echo $1 => c
+$*    1 arguments de l'ensemble des arguments de position séparés par le séparateur $IFS "$1 $2 $3"
+$@    liste l'ensemble des arguments de position                                         "$1" "$2" "$3"
+
+
+
+
+
+
+
 
 
 
