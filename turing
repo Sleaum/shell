@@ -1,3 +1,29 @@
+http://aral.iut-rodez.fr/fr/sanchis/enseignement/bash/
+
+#1
+$ user # root
+| tube
+lpstat -a information imprimante
+ps liste processus attachés à la fenêtre
+liste mots réservés : ! case do done elif else esac fi for function if in select then time until while { } [[ ]]
+commentaire ' #'
+echo -n pour pas de retour à la ligne
+type -t commande interne,builtin externe,file alias
+variables utilisateurs prédéfini PS1, PATH
+$ devant variable 'à droite'
++= concaténation chaine de caractères
+read varialbe (scanf(&variable)) read (scanf(&REPLY) read -p "Entrez votre prénom : " prenom
+declare -r toto=bonjour variable read only (attribut r)
+variables locales / environnement
+
+
+
+
+
+
+
+*****************************
+
 ## declare
   -n 
   -g
