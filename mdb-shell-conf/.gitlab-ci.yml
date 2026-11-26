@@ -1,0 +1,22 @@
+stages:
+  - test
+  - rpmbuild
+
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+
+unit-tests:
+  stage: test
+  image: docker-nexus.kubemedoc.nubo.dgfip/medocdb/mdb-rl8-rpmbuild:latest
+  script:
+    - tests_unit/bats/bin/bats --report-formatter junit --output . tests_unit/
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+
+rpmbuild:
+  stage: rpmbuild
+  image: docker-nexus.kubemedoc.nubo.dgfip/medocdb/mdb-rl8-rpmbuild:latest
+  script:
+    - . launch_rpmbuild.sh

@@ -1,0 +1,15 @@
+[
+  {
+    "DOMAINE": "X77",
+    "ID_SITE": "SITE1",
+    "NOM_TDS": "TDS77",
+    "EQSITDOM": "X00",
+    "CANBRTDS": "6",
+    "VIDE": null
+  },
+  {
+    "DOMAINE": "C01",
+    "ID_SITE": "CLE1",
+    "NOM_TDS": "M2CE"
+  }
+]
