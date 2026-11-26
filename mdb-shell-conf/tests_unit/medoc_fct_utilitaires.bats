@@ -119,7 +119,7 @@ setup() {
 }
 
 @test "BUG _0_fct_init applique FCT_EXEC_LIST (tir à blanc)" {
-    skip "BUG : eval \$FCT_EXEC_LIST fait un 'declare -A' LOCAL à la fonction -> FCT_EXEC global vide, tout s'exécute. Corriger avec : eval \"\${FCT_EXEC_LIST/declare -A/declare -gA}\""
+    skip "BUG : eval \$FCT_EXEC_LIST fait un 'declare -A' LOCAL à la fonction -> ignoré si le JOB est lancé dans un processus fils (bash JOB.sh). Sans impact avec medocdb_scripts_exec.sh qui source les JOBs. Corriger avec : eval \"\${FCT_EXEC_LIST/declare -A/declare -gA}\""
     declare -A tmp=([file_copy]=false)
     FCT_EXEC_LIST="$(declare -p tmp | sed 's/ tmp=/ FCT_EXEC=/')"
     _0_fct_init
