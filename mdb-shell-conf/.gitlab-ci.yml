@@ -9,11 +9,11 @@ unit-tests:
   stage: test
   image: docker-nexus.kubemedoc.nubo.dgfip/medocdb/mdb-rl8-rpmbuild:latest
   script:
-    - tests_unit/bats/bin/bats --report-formatter junit --output . tests_unit/
-  artifacts:
-    when: always
-    reports:
-      junit: report.xml
+    - tests_unit/bats/bin/bats tests_unit/
+  # Rapport JUnit (onglet "Tests" de la MR) : désactivé, la forge DGFiP refuse
+  # l'envoi d'artefacts (HTTP 405). A réactiver si les artefacts sont autorisés :
+  #   script:   tests_unit/bats/bin/bats --report-formatter junit --output . tests_unit/
+  #   artifacts: { when: always, reports: { junit: report.xml } }
 
 rpmbuild:
   stage: rpmbuild

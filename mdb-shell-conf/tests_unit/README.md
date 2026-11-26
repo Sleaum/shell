@@ -388,12 +388,23 @@ Exemple :
 
 ## 10. Intégration GitLab CI
 
-Le job `unit-tests` (stage `test`) tourne **avant** `rpmbuild`. Si un test échoue, le RPM n'est pas construit.
+Le job `unit-tests` (stage `test`) tourne **avant** `rpmbuild`. Si un test échoue, le job est rouge et le RPM n'est ni construit ni publié.
 
 ```yaml
 unit-tests:
   stage: test
   image: docker-nexus.kubemedoc.nubo.dgfip/medocdb/mdb-rl8-rpmbuild:latest
+  script:
+    - tests_unit/bats/bin/bats tests_unit/
+```
+
+Les résultats se lisent dans le **log du job** : une ligne `ok` / `not ok` par test, `# skip` pour les tests ignorés.
+
+### Rapport JUnit (désactivé)
+
+La forge DGFiP refuse l'envoi d'artefacts depuis les jobs (`405 Method Not Allowed` à l'upload), ce qui fait échouer le job même quand tous les tests passent. Le rapport JUnit est donc désactivé. Si les artefacts sont un jour autorisés, il suffit de remplacer le `script` et d'ajouter :
+
+```yaml
   script:
     - tests_unit/bats/bin/bats --report-formatter junit --output . tests_unit/
   artifacts:
@@ -402,11 +413,11 @@ unit-tests:
       junit: report.xml
 ```
 
-- `--report-formatter junit --output .` produit `report.xml` **en plus** de l'affichage habituel dans le log du job.
-- `reports: junit` fait apparaître le détail des tests dans l'onglet **Tests** du pipeline et dans la merge request.
-- `when: always` publie le rapport même quand des tests échouent.
+Le détail des tests apparaîtra alors dans l'onglet **Tests** du pipeline et dans la merge request.
 
-Si `jq` est absent de l'image RL8, les 17 tests de `medoc_fct_config.bats` apparaissent comme *skipped*. Pour les activer, ajouter `jq` à l'image, ou un `before_script: - dnf install -y jq` si le dépôt de paquets est accessible.
+### jq
+
+Si `jq` est absent de l'image RL8, les 17 tests de `medoc_fct_config.bats` apparaissent comme `# skip jq absent de cette machine`. Pour les activer, ajouter `jq` à l'image, ou un `before_script: - dnf install -y jq` si le dépôt de paquets est accessible.
 
 ---
 
